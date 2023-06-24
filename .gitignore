@@ -6,3 +6,4 @@ packages/
 *.user
 **/*.assets.cache
 Generated Files
+*.nupkg

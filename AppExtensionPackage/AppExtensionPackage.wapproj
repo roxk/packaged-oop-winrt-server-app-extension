@@ -56,7 +56,7 @@
     <DefaultLanguage>en-US</DefaultLanguage>
     <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
     <NoWarn>$(NoWarn);NU1702</NoWarn>
-    <EntryPointProjectUniqueName>..\AppExtension\AppExtension.vcxproj</EntryPointProjectUniqueName>
+    <EntryPointProjectUniqueName>..\AppExtensionCSharp\AppExtensionCSharp.csproj</EntryPointProjectUniqueName>
   </PropertyGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -77,6 +77,8 @@
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" PrivateAssets="all" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AppExtensionCSharp\AppExtensionCSharp.csproj" />
     <ProjectReference Include="..\AppExtension\AppExtension.vcxproj" />
+    <Content Include="..\AppExtensionCSharp\bin\$(Platform)\$(Configuration)\net6.0-windows10.0.22621.0\win10-$(Platform)\AppExtensionCSharp.winmd"/>
   </ItemGroup>
 </Project>

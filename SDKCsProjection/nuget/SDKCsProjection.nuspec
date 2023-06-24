@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>SDKCsProjection</id>
+    <version>0.0.1</version>
+	  <authors>Roxk</authors>
+	  <description>SDK Projection</description>
+	  <dependencies>
+		  <group targetFramework="net6.0-windows10.0.22621.0" />
+	  </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\_build\AnyCPU\Release\SDKCsProjection\bin\SDKCsProjection.dll" target="lib\net6.0-windows10.0.22621.0\SDKCsProjection.dll" />
+    <file src="..\..\x64\Release\SDK\SDK.dll" target="runtimes\win10-x64\native\SDK.dll" />
+  </files>
+</package>

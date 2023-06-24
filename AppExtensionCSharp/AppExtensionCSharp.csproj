@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<OutputType>WinExe</OutputType>
+	<TargetFramework>net6.0-windows10.0.22621.0</TargetFramework>
+	<TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<SelfContained>true</SelfContained>
+	<CsWinRTComponent>true</CsWinRTComponent>
+	<Platforms>x64</Platforms>
+	<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+	<PropertyGroup>
+		<RestoreSources>
+			https://api.nuget.org/v3/index.json;
+			../SDKCsProjection/nuget
+		</RestoreSources>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="SDKCsProjection" Version="0.0.1" />
+		<PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.0.3" />
+	</ItemGroup>
+
+</Project>

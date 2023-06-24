@@ -50,18 +50,26 @@
 						<WidgetProvider>
 							<Activation>
 								<ActivatableClass ActivatableClassId="PackagedOOPWinRTServerAppExtension.WidgetProvider"/>
+								<ActivatableClass ActivatableClassId="AppExtensionCSharp.WidgetProvider"/>
                             </Activation>
                         </WidgetProvider>
                     </uap3:Properties>
                 </uap3:AppExtension>
             </uap3:Extension>
 			<uap5:Extension Category="windows.activatableClass.outOfProcessServer">
-				<uap5:OutOfProcessServer ServerName="WidgetProviderServer" RunFullTrust="true">
+				<uap5:OutOfProcessServer ServerName="WidgetProviderCppServer" RunFullTrust="true">
 					<uap5:Path>AppExtension\AppExtension.exe</uap5:Path>
 					<uap5:Instancing>singleInstance</uap5:Instancing>
 					<uap5:ActivatableClass ActivatableClassId="PackagedOOPWinRTServerAppExtension.WidgetProvider" />
-                </uap5:OutOfProcessServer>
-            </uap5:Extension>
+				</uap5:OutOfProcessServer>
+			</uap5:Extension>
+			<uap5:Extension Category="windows.activatableClass.outOfProcessServer">
+				<uap5:OutOfProcessServer ServerName="WidgetProviderCSharpServer" RunFullTrust="true">
+					<uap5:Path>AppExtensionCSharp\AppExtensionCSharp.exe</uap5:Path>
+					<uap5:Instancing>singleInstance</uap5:Instancing>
+					<uap5:ActivatableClass ActivatableClassId="AppExtensionCSharp.WidgetProvider" />
+				</uap5:OutOfProcessServer>
+			</uap5:Extension>
         </Extensions>
     </Application>
   </Applications>

@@ -97,28 +97,62 @@ wf::IAsyncOperation<int> MainAsync()
             std::wcout << L"Could not find activation" << std::endl;
             continue;
         }
+        std::vector<winrt::hstring> classIds;
         auto activatableClass{ TryGet<wfc::IPropertySet>(activation, L"ActivatableClass") };
-        if (activatableClass == nullptr)
+        if (activatableClass != nullptr)
         {
-            std::wcout << L"Could not find activatable class" << std::endl;
-            continue;
+            auto classIdOpt{ TryGet<winrt::hstring>(activatableClass, L"@ActivatableClassId") };
+            if (!classIdOpt)
+            {
+                std::wcout << L"Could not find class Id" << std::endl;
+                continue;
+            }
+            classIds.emplace_back(std::move(*classIdOpt));
         }
-        auto classIdOpt{ TryGet<winrt::hstring>(activatableClass, L"@ActivatableClassId") };
-        if (!classIdOpt)
+        else
         {
-            std::wcout << L"Could not find class Id" << std::endl;
-            continue;
+            auto activatableClasses{ TryGet<wf::IReferenceArray<wf::IInspectable>>(activation, L"ActivatableClass") };
+            if (activatableClasses == nullptr)
+            {
+                std::wcout << L"Could not find any activatable class" << std::endl;
+                continue;
+            }
+            winrt::com_array<wf::IInspectable> classes;
+            activatableClasses.GetInspectableArray(classes);
+            if (classes.empty())
+            {
+                std::wcout << L"Could not find any activatable class array" << std::endl;
+                continue;
+            }
+            for (auto&& classProp : classes)
+            {
+                auto cls{ classProp.try_as<wfc::IPropertySet>() };
+                if (cls == nullptr)
+                {
+                    std::wcout << L"An activatable class element isn't a property set" << std::endl;
+                    continue;
+                }
+                auto classIdOpt{ TryGet<winrt::hstring>(cls, L"@ActivatableClassId") };
+                if (!classIdOpt)
+                {
+                    std::wcout << L"Could not find class Id" << std::endl;
+                    continue;
+                }
+                classIds.emplace_back(std::move(*classIdOpt));
+            }
         }
-        auto classId{ *classIdOpt };
-        auto factory{ winrt::get_activation_factory(classId)};
-        auto widgetProvider{ factory.ActivateInstance<winrt::SDK::IWidgetProvider>() };
-        if (widgetProvider == nullptr)
+        for (auto&& classId : classIds)
         {
-            std::wcout << L"Extension's activatable class isn't an IWidgetProvider" << std::endl;
-            continue;
+            auto factory{ winrt::get_activation_factory(classId) };
+            auto widgetProvider{ factory.ActivateInstance<winrt::SDK::IWidgetProvider>() };
+            if (widgetProvider == nullptr)
+            {
+                std::wcout << L"Extension's activatable class isn't an IWidgetProvider" << std::endl;
+                continue;
+            }
+            auto hello{ widgetProvider.SayHello() };
+            std::wcout << L"widget from " << pfn.c_str() << L" saying hello: " << hello.c_str() << std::endl;
         }
-        auto hello{ widgetProvider.SayHello() };
-        std::wcout << L"widget from " << pfn.c_str() << L" saying hello: " << hello.c_str() << std::endl;
     }
     co_return 0;
 }
