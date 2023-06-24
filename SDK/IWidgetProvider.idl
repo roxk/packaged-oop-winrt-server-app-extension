@@ -1,0 +1,12 @@
+namespace SDK
+{
+    interface IWidgetProvider
+    {
+        String SayHello();
+    }
+
+    [default_interface]
+    runtimeclass _DummyProvider : IWidgetProvider
+    {
+    }
+}

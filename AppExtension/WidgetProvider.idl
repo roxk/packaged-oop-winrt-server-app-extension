@@ -1,0 +1,9 @@
+namespace PackagedOOPWinRTServerAppExtension
+{
+    [bindable]
+    [default_interface]
+    runtimeclass WidgetProvider : SDK.IWidgetProvider
+    {
+        WidgetProvider();
+    }
+}
