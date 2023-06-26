@@ -61,7 +61,7 @@ _Then provide it_. The first page of VS Code extension documentation is actually
 
 Yes. I'd argue even with template, the amount of boilerplate is not acceptable. 
 
-Technically, the code blocks in widget's documentation can be copy and pasted. Modify the GUID a bit and you would be good to go. But it _requires_ devs to know about COM in the first place. Anedoctally, I have seen a dev giving up on widget as soon as he sees COM, since he isn't familiar with it. COM is a huge barrier to entry. If MS want these techology (Widget/Dev Home) to thrive, they need to lower the barrier to entry, not lift it.
+Technically, the code blocks in widget's documentation can be copy and pasted. Modify the GUID a bit and you would be good to go. But it _requires_ devs to know about COM in the first place. Anedoctally, I have seen a dev [giving up on widget as soon as he sees COM](https://twitter.com/okazuki/status/1672457638691635200?t=lhFS0J82KZwwSi9f0Bwqjw&s=19)*, since he isn't familiar with it. COM is a huge barrier to entry. If MS want these techology (Widget/Dev Home) to thrive, they need to lower the barrier to entry, not lift it.
 
 WinRT server is the perfect tool to lower the barrier to entry. The 5 lines of boilerplate in C# and C++ are all just class and methods. No GUID. No `ComImport`. No `DllImport`. No marshalling. No set event and cookie. _It's just plain class and methods_.
 
@@ -70,6 +70,8 @@ The best part? WinRT server's boilerplate doesn't require developers to change a
 I'd also touch on a less technical, but more social argument - COM is just old at this point. Using COM server doesn't make people think a technology as cool, new, exciting. It might be more associated with legacy, baggage, boring, boilerplate. WinRT server has none of those connotation and rightfully so.
 
 (The fact that COM is the underlying technology of WinRT doesn't undermine the impression/boilerplate nature of it)
+
+*Link authorized by tweet poster
 
 ### But WinRT server cannot implement my X/Y usecase whereas COM server could
 
