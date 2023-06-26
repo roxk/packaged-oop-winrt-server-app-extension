@@ -67,7 +67,7 @@ WinRT server is the perfect tool to lower the barrier to entry. The 5 lines of b
 
 The best part? WinRT server's boilerplate doesn't require developers to change anything, at all. It's all just code generated from the projection. It would truly be a 1-time copy and paste. Should there be template, the template would be much easier to maintain.
 
-I'd also touch on a less technical, but more social argument - COM is just old at this point. Using COM doesn't make people think a technology as cool, new, exciting. It might be more associated with legacy, baggage, boring, boilerplate. WinRT server has nothing of those connotation and rightfully so.
+I'd also touch on a less technical, but more social argument - COM is just old at this point. Using COM server doesn't make people think a technology as cool, new, exciting. It might be more associated with legacy, baggage, boring, boilerplate. WinRT server has none of those connotation and rightfully so.
 
 (The fact that COM is the underlying technology of WinRT doesn't undermine the impression/boilerplate nature of it)
 
