@@ -8,7 +8,10 @@ COM Server was great. But WinRT Server is even better. It's time to say good bye
 
 ## What?
 
-This is a sample that demonstrates how to use packaged OOP WinRT Server and Dynamic Dependency to implement IPC/customization point, replacing packaged COM server.
+This is a sample that demonstrates how to use packaged OOP (Out-Of-Process) WinRT Server and Dynamic Dependency to implement IPC/customization point, replacing packaged COM server.
+
+The following samples are available:
+- Using packaged OOP WinRT Server with MSIX App Extension (aka Widget/Dev Home-like API)
 
 ## Motivation
 
@@ -34,7 +37,7 @@ Instead of manually defining the class factory interface, implementing a class f
 
 With AppX Manifest supporting Out-Of-Process WinRT Server, we don't have to do anything, and the package would automatically broadcast to the system that a WinRT server is available. No more adding CLSID to registry and suffer from registry pollution/breakage (granted, pacakged COM server enjoys similar benefit).
 
-The last bits of the puzzle comes from new features of Windows 11/WASDK. One of them is Dynamic Dependency. Packaged WinRT server is good, but due to its binary lookup rules, it only works when the client can locate the binary that handles the activation request.
+The last bits of the puzzle comes from new features of Windows 11/WASDK. One of them is Dynamic Dependency. Packaged WinRT server is good, but due to binary lookup rules for class activation request handler, it only works when the client can locate the binary that handles the activation request.
 
 If the packaged WinRT server comes from a known package, all a client has to do is to declare a dependency on the package. However, if the WinRT server comes from downstream packages - like in the case of widget or Dev Home - there is no trivial way to locate the binary which would handle the activation request even though an app had declared it in the manifest.
 
